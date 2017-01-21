@@ -1,0 +1,64 @@
+$def with (song_list)
+<!DOCTYPE html>
+<html>
+    <head>
+       <meta charset="utf-8">
+       <title>免费下载无损音乐</title>
+       <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+       <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+       <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <style>
+            tr {
+                text-align: left;
+            }
+        </style>
+    </head>
+
+    <body style="text-align:center">
+        <form method="get" action="">
+             <div style="margin: 0 auto; width: 800px;">
+                 <h1>免费下载无损音乐</h1>
+                <div class="input-group" style="width: 400px;margin: 0 auto;">
+                    <input type="text" name="keyword" class="form-control" placeholder="请输入歌手名/歌曲名">
+                    <span class="input-group-btn" style="width: 120px">
+                      <select name="source" class="form-control">
+                         <option value="网易云">网易云</option>
+                         <option value="天天动听">天天动听</option>
+                         <option value="酷狗音乐" selected>酷狗音乐</option>
+                         <option value="酷我音乐">酷我音乐</option>
+                         <option value="QQ音乐">QQ音乐</option>
+                         <option value="虾米音乐">虾米音乐</option>
+                         <option value="百度音乐">百度音乐</option>
+                         <option value="电信音乐">电信音乐</option>
+                        </select>
+                    </span>
+                    <span class="input-group-btn">
+                        <input class="btn btn-primary" type="submit" style="width: 80px;">Go!</input>
+                    </span>
+                </div>
+
+          <table class="table table-bordered table-striped" style="margin-top: 30px;">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>歌手名</th>
+                  <th>歌曲名</th>
+                  <th>专辑名</th>
+                  <th>下载</th>
+                </tr>
+              </thead>
+              <tbody>
+              $for index, row in enumerate(song_list):
+                <tr>
+                  <td>${index+1}</td>
+                  <td>$row["Artist"]</td>
+                  <td><a href="$row['FlacUrl']" target="_blank">$row["SongName"]</a></td>
+                  <td>$row["Album"]</td>
+                  <td><a href="$row['FlacUrl']" target="_blank"><span class="glyphicon glyphicon-download"></span></td>
+                </tr>
+              </tbody>
+            </table>
+            </div>
+        </form>
+    </body>
+</html>
