@@ -60,9 +60,12 @@ if __name__ == "__main__":
 		keyword = sys.argv[1]
 		try:
 			keyword = keyword.decode("gbk")
-			keyword = keyword.encode("utf8")
 		except:
-			pass
+			try:
+				keyword = keyword.encode("utf8")
+			except Exception as e:
+				print e
+				pass
 	else:
 		keyword = "中国好声音"
 	song_list = get_search_list(keyword)
